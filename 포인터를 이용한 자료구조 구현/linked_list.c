@@ -44,17 +44,19 @@ void add_BackNode(int n)
 		tail->link = NULL;
 	}
 }
+
 void insert_Node(int m, int n) // insert node at m'th behind
 { 
 	struct linked_list* node = malloc(sizeof(struct linked_list));
-	struct linked_list* temp = malloc(sizeof(struct linked_list));
-	struct linked_list* temp2 = malloc(sizeof(struct linked_list));
+	struct linked_list* temp;
+	struct linked_list* temp2;
+	
 	node->data = n;
 	
 	temp = head;
 	temp2 = head;
-	int i;
 	
+	int i;	
 	for(i=0; i<m; i++)
 	{
 		temp = temp->link;
@@ -70,24 +72,37 @@ void insert_Node(int m, int n) // insert node at m'th behind
 	//node->link = temp;		
 }
 
-/*
-void show_Node()
+void delete_Node(int m) // delete m th node 
 {
-	current = head;
-	while(current != NULL)
+	struct linked_list* node = malloc(sizeof(struct linked_list));
+	struct linked_list* pre_node;
+		
+	// -----delete front node-----//
+	if(m==1)
 	{
-		printf("%d ", current->data);
-		current = current->link;
-	}	
-}*/
+		head = head->link;		
+	}
+	else
+	{
+		pre_node = head;
+		int i;
+		for(i=0; i<m-2; i++)
+		{
+			pre_node = pre_node->link;
+		}
+		struct linked_list* del_node = pre_node->link; 	
+		pre_node->link = del_node->link;
+	}
+}
+
 int main(void)
 {	
 	add_FrontNode(1);
 	add_BackNode(2);
 	add_BackNode(3);
 	add_BackNode(4);
-	add_FrontNode(5);
-	insert_Node(5,7);
+	insert_Node(4,5); //4번째 노드 뒤에 5 insert 
+	delete_Node(2);
 
 	current = head;
 	while(current != NULL)
