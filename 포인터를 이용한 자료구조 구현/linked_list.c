@@ -96,8 +96,8 @@ int main(void)
 	add_BackNode(2);
 	add_BackNode(3);
 	insert_Node(2,4); //2번째 노드 뒤에 4 insert 
-	delete_Node(2);
-
+	delete_Node(3);
+   // 1 2 3
 	current = head;
 	while(current != NULL)
 	{
