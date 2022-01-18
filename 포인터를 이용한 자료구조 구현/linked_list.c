@@ -6,14 +6,14 @@ struct linked_list
 	int data;
 	struct linked_list* link; //다음 노드의 주소를 저장하는 포인터 변수 
 };
-	
+	//remove globalvariable
 struct linked_list* head = NULL;
 struct linked_list* tail = NULL;
 struct linked_list* current = NULL;
 
-void add_FrontNode(int n)
+void add_FrontNode(int n) //1.return 2.add_front_node 3.n
 {
-	struct linked_list* node = malloc(sizeof(struct linked_list));
+	struct linked_list* node = malloc(sizeof(struct linked_list));// error,if malloc ->null
 	node->data = n;
 		
 	if(head == NULL) //리스트가 비어있는 경우 
@@ -47,7 +47,7 @@ void add_BackNode(int n)
 void insert_Node(int m, int n) // insert node at m'th behind
 { 
 	struct linked_list* node = malloc(sizeof(struct linked_list));
-	struct linked_list* temp;
+	struct linked_list* temp; //variable naming
 	struct linked_list* temp2;
 	
 	node->data = n;
@@ -56,10 +56,10 @@ void insert_Node(int m, int n) // insert node at m'th behind
 	temp2 = head;
 	
 	int i;	
-	for(i=0; i<m; i++)
+	for(i=0; i<m; i++) //m
 	{
 		temp = temp->link;
-		if(m-i != 1)
+		if(m-i != 1)//
 		{
 			temp2 = temp2->link;
 		}
@@ -68,7 +68,7 @@ void insert_Node(int m, int n) // insert node at m'th behind
 	node->link = temp;	
 }
 
-void delete_Node(int m) // delete m th node 
+static void _delete_Node(int m) // delete m th node 
 {
 	struct linked_list* node = malloc(sizeof(struct linked_list));
 	struct linked_list* pre_node;
@@ -98,7 +98,7 @@ int main(void)
 	insert_Node(2,4); //2번째 노드 뒤에 4 insert 
 	delete_Node(3);
    // 1 2 3
-	current = head;
+	current = head; //function
 	while(current != NULL)
 	{
 		printf("%d ", current->data);
@@ -106,4 +106,5 @@ int main(void)
 	}	
 	//free
 	return 0;
-}
+} //init -> malloc, exit -> free
+//static, _
