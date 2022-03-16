@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
 	vector<int> v1(5); //a
 	vector<int> v2(5); //b
 	vector<int> v3; //ans
-	
+	cd
 	while(t--)
 	{
 		int a,b, cnt=0;
